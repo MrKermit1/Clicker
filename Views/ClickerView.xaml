@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Clicker.Views.ClickerView">
+    <VerticalStackLayout 
+        Spacing="10" 
+        BackgroundColor="{Binding Color}"
+        
+        VerticalOptions="Center">
+        <Label 
+            Text="{Binding Name}" 
+            Padding="10" 
+            Margin="10"
+            FontSize="14"
+            HorizontalOptions="Center"/>
+        <VerticalStackLayout Spacing="10">
+            <Label 
+                Text="{Binding Value}" 
+                FontSize="14"
+                Grid.Column="1"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"/>
+            <Grid 
+                ColumnSpacing="30" 
+                Padding="10"
+                HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                Text="➕" 
+                Padding="10"
+                FontSize="14"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnIncrementClicked" />
+
+                <Button 
+                Text="➖" 
+                Padding="10"
+                FontSize="14"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnDecrementClicked" />
+            </Grid>
+
+            <Grid 
+                ColumnSpacing="30" 
+                Padding="10"
+                HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                Text="❌" 
+                Padding="10"
+                FontSize="14"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                Clicked="OnDeleteClicked" />
+
+                <Button 
+                Text="R" 
+                Padding="10"
+                FontSize="14"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                Clicked="OnResetClicked" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+    
+</ContentView>

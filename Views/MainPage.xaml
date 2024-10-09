@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Clicker.Views.MainPage"
+             xmlns:views="clr-namespace:Clicker.Views">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button 
+                    Text="Add new clicker"
+                    Clicked="OnAddNewClickerG"/>
+                <Button 
+                    Text="Save All Clickers"
+                    Clicked="OnSaveAllClicked"/>
+            </HorizontalStackLayout>
+                
+            
+                <CollectionView ItemsSource="{Binding Clickers}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <views:ClickerView ClickerModel="{Binding}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+            </VerticalStackLayout>
+        </ScrollView>
+
+    
+
+</ContentPage>
+    
