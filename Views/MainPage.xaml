@@ -10,13 +10,9 @@
                 <Button 
                     Text="Add new clicker"
                     Clicked="OnAddNewClickerG"/>
-                <Button 
-                    Text="Save All Clickers"
-                    Clicked="OnSaveAllClicked"/>
+
             </HorizontalStackLayout>
-                
-            
-                <CollectionView ItemsSource="{Binding Clickers}">
+            <CollectionView ItemsSource="{Binding Clickers}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <views:ClickerView ClickerModel="{Binding}"/>

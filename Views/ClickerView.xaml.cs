@@ -16,6 +16,7 @@ public partial class ClickerView : ContentView
             BindingMode.Default,
             propertyChanged: OnClickerModelChanged
         );
+    Connector connector = new();
 
     public ClickerModel ClickerModel
     {
@@ -46,17 +47,17 @@ public partial class ClickerView : ContentView
     private void OnIncrementClicked(object sender, EventArgs e)
     {
         ClickerModel?.Increment();
+        connector?.saveOneClicker(ClickerModel);
     }
 
     private void OnDecrementClicked(object sender, EventArgs e)
     {
         ClickerModel?.Decrement();
+        connector?.saveOneClicker(ClickerModel);
     }
 
     private async void OnDeleteClicked(object sender, EventArgs e)
     {
-        Connector connector = new();
-
         await connector.deleteOneClicker(ClickerModel?.Name);
 
         //odœwie¿anie maina:

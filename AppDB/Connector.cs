@@ -12,7 +12,7 @@ namespace Clicker.AppDB
 {
     public class Connector
     {
-        static readonly string key = "linkDoBazyMongo";
+        static readonly string key = "linkDoBazy";
         static readonly string dbName = "ClickerApp";
         static readonly string collectionName = "clickers";
 
@@ -94,8 +94,7 @@ namespace Clicker.AppDB
             foreach (var clicker in Clickers)
             {
                 var filter = Builders<ClickerModel>.Filter.Eq(p => p.Id, clicker.Id);
-                var update = Builders<ClickerModel>.Update
-                .Set(p => p.Value, clicker.Value);
+                var update = Builders<ClickerModel>.Update.Set(p => p.Value, clicker.Value);
 
                 try
                 {
@@ -111,7 +110,27 @@ namespace Clicker.AppDB
                     connectorState = false;
                 }
             }
+        }
 
+        public async Task saveOneClicker(ClickerModel Clicker)
+        {
+            var filter = Builders<ClickerModel>.Filter.Eq(p => p.Id, Clicker.Id);
+            var update = Builders<ClickerModel>.Update.Set(p => p.Value, Clicker.Value);
+
+            try
+            {
+                var res = await collection.UpdateOneAsync(filter, update);
+
+                if (res.ModifiedCount == 0)
+                {
+                    connectorState = false;
+                }
+            }
+            catch
+            {
+                connectorState = false;
+            }
+                
         }
 
 
